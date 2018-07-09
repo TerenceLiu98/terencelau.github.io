@@ -1,0 +1,106 @@
+<h1 id="macos-2018-">macOS 开发环境（2018）</h1>
+<p> 在 2018 年的 July 7th，我重新安装了我的电脑系统。原因很简单，因为之前整个电脑的环境实在是太乱了：各种东西删了又下，当时年轻，还不知道 <code>rm</code> 掉一些配置文件，导致电脑很乱。 <br>
+ 终于下定决心去重装一下。</p>
+<h2 id="-">第一步 磁盘工具</h2>
+<p> 就跟手机一样，Mac 有一个类似于 Recovery 的界面。 点击 Restart 以后，立刻按住以下组合键之一，看到  标志或者地球🌍 时
+ 松开。
+ <table>
+  <tr>
+    <td>
+      Command (⌘)-R
+    </td>
+    <td>
+      安装您在 Mac 上安装过的最新 macOS，但不会升级到更高的版本。
+    </td><br>  </tr>
+    <tr>
+    <td>
+      Option-Command-R
+    </td>
+    <td>
+      升级到与您的 Mac 兼容的最新 macOS。
+    </td><br>  </tr>
+    <tr>
+    <td>
+      Shift-Option-Command-R
+    </td>
+    <td>
+      需要安装 macOS Sierra 10.12.4 或更高版本    安装 Mac 附带的 macOS 或最接近的仍可用版本。这个组合键需要 macOS Sierra 10.12.4 或更高版本
+    </td><br>  </tr><br></table>
+  <br>
+  当看到“macOS 实用工具”窗口时，请继续查看下一部分，以确定是要抹掉您的启动磁盘还是要开始安装 macOS。
+<a href="https://i.loli.net/2018/07/08/5b421150c0133.jpg"><img src="https://i.loli.net/2018/07/08/5b421150c0133.jpg" alt="macos-high-sierra-recovery-mode-reinstall.jpg"></a></p>
+<p>因为我要完全重装，所以我先点击了「Disk Utility」，</p>
+<ol>
+<li>选择“磁盘工具”，然后点按“继续”。</li><li>在左侧选择您的启动磁盘，然后点按“抹掉”。</li><li>点按“格式”弹出式菜单，选取“Mac OS 扩展”，输入名称，然后点按“抹掉”。<strong>「也就是 APFS 格式，不用改动，默认的就好」</strong>
+<br>
+<strong>【重要事项】抹掉磁盘会移除磁盘上的所有信息。请务必将您想要保留的信息备份到外置设备。</strong></li><li><p>在磁盘已被抹掉后，请选取“磁盘工具”&gt;“退出磁盘工具”。</p>
+</li><li><p>选择“重新安装 macOS”，点按“继续”，然后按照屏幕说明进行操作。</p>
+</li></ol>
+<p><a href="https://i.loli.net/2018/07/08/5b42121b9f105.png"><img src="https://i.loli.net/2018/07/08/5b42121b9f105.png" alt="macos-high-sierra-disk-utility-erase-internal-drive.png"></a></p>
+<p>等待十几分钟到几十分钟不等后，你的电脑就有一个全新的系统了。</p>
+<h2 id="-">第二步 设置</h2>
+<p>我认为大家都是聪明人，不需要我在这里讲怎么设置。但是，我还是给你们一个链接：<a href="https://support.apple.com/zh-cn/explore/new-to-mac">认识你的 Mac </a>，
+官方介绍文档了解一下？</p>
+<h2 id="-">第三步 开发环境配置</h2>
+<h3 id="homebrew">Homebrew</h3>
+<blockquote>
+<p>Homebrew installs the stuff you need that Apple didn’t.<br>
+Homebrew installs packages to their own directory and then symlinks their
+files into /usr/local.<br>
+Homebrew won’t install files outside its prefix, and you can place a
+Homebrew installation wherever you like...</p>
+</blockquote>
+<p>Homebrew 应该是 Mac 上最流行的包管理器，通过 Homebrew 可以我们可以一键安装很多软件
+（自动安装依赖）</p>
+<pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/<span class="hljs-keyword">install</span>/<span class="hljs-keyword">master</span>/<span class="hljs-keyword">install</span>)<span class="hljs-string">"</span>
+</code></pre><p>由于我重新装的是 <code>macOS Mojave Version 10.14 Beta</code> 要用 Xcode 10 beta，但因为我的懒惰
+和种种原因，导致了无法「一键安装 Homebrew 」；下面是我手动安装的方法：
+<br>
+首先要打开终端（Terminal），找到一个全局的路径：<code>/usr/local</code>,因为「一键安装」也是装在这里，
+所以我也装在这里了。</p>
+<pre><code class="lang-Shell"><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span> <span class="hljs-comment">#进入 local</span>
+</code></pre>
+<pre><code class="lang-Shell"><span class="hljs-attribute">sudo</span> mkdir Homebrew <span class="hljs-comment">#新建文件</span>
+</code></pre>
+<pre><code class="lang-Shell"> <span class="hljs-attribute">curl</span> -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip <span class="hljs-number">1</span> -C homebrew
+
+ <span class="hljs-comment">#下载并解包安装 homebrew</span>
+</code></pre>
+<p>上面的安装只是将Homebrew解压到本地，还需要配置环境变量才能使用brew命令，否则终端会提示<code>Command Not Found</code>。
+<br></p>
+<p>打开终端，新建.bash_profile文件在~/目录下（如果电脑里已经有了这个文件，跳过这一步）</p>
+<pre><code class="lang-Shell"><span class="hljs-attribute">touch</span> ~/.bash_profile
+</code></pre>
+<p>然后需要打开<code>.bash_profile</code>：<code>open ~/.bash_profile</code><br>
+在弹出的编辑窗口中配置PATH：<code>export PATH=/usr/local/Homebrew/bin:$PATH</code><br>
+然后再回到终端输入，使文件生效：<code>source ~/.bash_profile</code><br>
+至此，手动安装 homebrew 就结束了。
+<br>
+画个重点：<strong>如果使用手动安装的 Homebrew，记得把路径加入 shell</strong>；
+如果你的默认shell是bash ，那么把<code>~/.bash_profile</code>
+追加到 <code>~/.bashrc</code> 末尾, bash开启时会自动执行<code>.bashrc</code>这个文件
+如果是其他的比如 zsh，那么追加到 <code>~/.zshrc</code> 末尾</p>
+<h3 id="iterm2">iTerm2</h3>
+<p>Home Github，iTerm2是Mac下的终端工具。作为替代Mac自带的终端工具必然有它的特别之处：
+兼容性更好，远程服务器时提供更好的兼容性。
+支持 xterm-256 色，自定义配色，Iterm2-color-schemes。
+快捷键丰富，自带/自己定义都很方便。
+分屏简单方便，搭配tmux，功能更强大。
+安装
+官网下载，拖拽至Applications文件夹。
+brew 安装，<code>brew install iterm2</code>。
+使用
+单击即可启动，建议保留在Dock，方便日常启动。</p>
+<h3 id="oh-my-zsh">Oh-my-zsh</h3>
+<p>Home Github，Oh-My-Zsh是一个开源的社区驱动框架，用于管理您的ZSH配置。它捆绑了一吨有用的功能，帮助，插件，主题和一些东西。只希望更快的提高你的工作效率。
+安装</p>
+<p>curl安装：</p>
+<pre><code>sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span>
+</code></pre><p>wget安装：</p>
+<pre><code>sh -c <span class="hljs-string">"<span class="hljs-variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span>
+</code></pre><p>使用<code>oh-my-zsh</code>提供了200+的插件。通过配置<code>~/.zshrc</code>来加载插件，系统默认只加载了git插件。
+<code>plugins=(git)`</code>
+插件地址在<code>~/.oh-my-zsh/plugins</code>，你可以进入具体目录，查看帮助。
+<br></p>
+<h3 id="-">编辑器</h3>
+<p>我之前使用的是 Sublime text 3，但是这个暑假开始尝试其他不同的编辑器了，例如，VScode 还有 Atom，现在在使用 Atom. 这个东西因人而异吧，当然也是可以使用 MacVim 的，也不错。</p>
