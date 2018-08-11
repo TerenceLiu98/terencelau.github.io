@@ -535,19 +535,21 @@ a:hover {
 }
 
 .twitter {
-  color: #0C9DF2;
+  color:  #1DA1F2;
 }
 
 .zhihu {
   color: #0767c8;
 }
 
-.weibo {
-  color: #E80025;
+.instagram {
+  color: #262626;
 }
 
 .github {
+  display:inline-block;
   color: #333333;
+  text-align: center;
 }
 
 .medium {
@@ -559,7 +561,11 @@ a:hover {
 }
 
 .telegram {
-  color: #179cde;
+  color: #f28cd2;
+}
+
+.googleplus {
+  color: #DB4437;
 }
 
 .non-style-list {
@@ -582,28 +588,28 @@ a:hover {
   font-weight: bold;
 }
 
-.description .desc {
+.description .details {
   color: #65737E;
 }
 
 nav .nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style-type:decimal;
+  margin: auto;
+  padding: inherit;
   text-align: center;
 }
 
 nav .nav {
-  padding: 2em;
+  padding: 3em;
 }
 
 nav .nav .nav-item {
-  display: inline-block;
+  display: inline-table;
   margin-right: .5em;
 }
 
 .container {
-  width: 640px;
+  width: 720px;
   margin: 0 auto;
 }
 
@@ -615,6 +621,7 @@ nav .nav .nav-item {
 
 .post-list-item {
   margin-bottom: .5em;
+  color: #474d51;
 }
 
 .skill-list {
@@ -632,11 +639,25 @@ nav .nav .nav-item {
   text-transform: uppercase;
   text-align: center;
   border-bottom: 1px solid #A7ADBA;
-  margin-top: 3em;
-  margin-bottom: 1.2em;
-  cursor: default;
-  user-select: none;
+  margin-top: 1.854em;
+  margin-bottom: 3em;
+  cursor: auto;
+  user-select:a uto;
 }
+/* as the subtitle, we can just put it in the left of the container
+.hr-left {
+  height: 0;
+  font-size: 1em;
+  line-height: 0;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 0px solid #A7ADBA;
+  margin-top: 1.854em;
+  margin-bottom: 3em;
+  cursor: auto;
+  user-select:a uto;
+}
+*/
 
 .hr span {
   background-color: #fff;
@@ -690,9 +711,12 @@ nav .nav .nav-item {
   text-align: center;
   color: #C0C5CE;
 }
-
 #footer a {
   color: #C0C5CE;
+}
+
+footer.copyright b {
+  color: #ff0000;
 }
 
 .timeline ul li {
