@@ -24,7 +24,7 @@ html {
  */
 
 body {
-  margin: 0;
+  margin: 10;
 }
 
 /**
@@ -642,7 +642,7 @@ nav .nav .nav-item {
   background-color: #fff;
   padding-left: .5em;
   padding-right: .5em;
-  color: #A7ADBA;
+  color: #E895AF;
 }
 
 .post-body {
@@ -650,11 +650,12 @@ nav .nav .nav-item {
 }
 
 .post-body .title {
+
 }
 
 .post-body .date {
   color: #A7ADBA;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .post-body p {
