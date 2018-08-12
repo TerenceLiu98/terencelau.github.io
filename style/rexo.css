@@ -11,7 +11,7 @@
    ========================================================================== */
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-family:sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 3 */
   -webkit-text-size-adjust: 100%; /* 3 */
 }
@@ -37,7 +37,7 @@ footer,
 header,
 nav,
 section {
-  display: block;
+  display:block;
 }
 
 /**
@@ -547,9 +547,7 @@ a:hover {
 }
 
 .github {
-  display:inline-block;
   color: #333333;
-  text-align: center;
 }
 
 .medium {
@@ -609,8 +607,8 @@ nav .nav .nav-item {
 }
 
 .container {
-  width: 720px;
-  margin: 0 auto;
+  width: 640px;
+  margin: 20 auto;
 }
 
 .post-list {
