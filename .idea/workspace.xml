@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ec01a10-53c9-4ef4-8ca4-254374a0772a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Book.htm" beforeDir="false" afterPath="$PROJECT_DIR$/Book.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/what-is-jupyter.html" beforeDir="false" afterPath="$PROJECT_DIR$/what-is-jupyter.html" afterDir="false" />
-    </list>
+    <list default="true" id="7ec01a10-53c9-4ef4-8ca4-254374a0772a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -18,9 +15,9 @@
     <session id="1067980316">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -43,10 +40,21 @@
           <entry key="HTML" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/style/rexo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +73,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="25" />
+    <option name="x" value="277" />
     <option name="y" value="23" />
     <option name="width" value="947" />
     <option name="height" value="1057" />
@@ -118,14 +126,15 @@
       <option name="presentableId" value="Default" />
       <updated>1534039886545</updated>
       <workItem from="1534039888283" duration="70000" />
+      <workItem from="1536482754564" duration="623000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70000" />
+    <option name="totallyTimeSpent" value="693000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="25" y="23" width="947" height="1057" extended-state="0" />
+    <frame x="277" y="23" width="947" height="1057" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24946004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -157,6 +166,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/rexo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
