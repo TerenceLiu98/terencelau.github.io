@@ -219,10 +219,20 @@ scatterplot3d(data$X1.sales, data$X2.profits, data$X3.assets)</code></pre>
 <li>Compute <span class="math inline">\(\bar{x_1}, \bar{x_2}, S_{11}, S_{12}, S_{22}\)</span> and <span class="math inline">\(r_{12}\)</span> and intepret <span class="math inline">\(r_{12}\)</span></li>
 </ol>
 <pre class="r"><code>x_1 &lt;- mean(data$X1.sales)
-x_2 &lt;- mean(data$X2.profits)
-s_11 &lt;- var(data$X1.sales)
-s_12 &lt;- var(data$X2.profits)
-r_12 &lt;- cor(data$X1.sales, data$X2.profits)</code></pre>
+x_1</code></pre>
+<pre><code>## [1] 155.603</code></pre>
+<pre class="r"><code>x_2 &lt;- mean(data$X2.profits)
+x_2</code></pre>
+<pre><code>## [1] 14.704</code></pre>
+<pre class="r"><code>s_11 &lt;- var(data$X1.sales)
+s_11</code></pre>
+<pre><code>## [1] 7476.453</code></pre>
+<pre class="r"><code>s_12 &lt;- cov(data$X1.sales,data$X2.profits)
+s_12</code></pre>
+<pre><code>## [1] 303.6186</code></pre>
+<pre class="r"><code>r_12 &lt;- cor(data$X1.sales, data$X2.profits)
+r_12</code></pre>
+<pre><code>## [1] 0.686136</code></pre>
 <p><span class="math inline">\(r_12\)</span> is the correlation coeffecient and it represents the correlation between column <span class="math inline">\(1\)</span> and column <span class="math inline">\(2\)</span>.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Represent the data in each of follwoing ways:(i) Stars; (ii) Chernoff faces; (iii) faces; Fourier scries plot (Andrews’ method)</li>
