@@ -230,5 +230,13 @@ monospace;'>
         <a href='http://www.miitbeian.gov.cn/'>粤ICP备1809817号</a>
   </p>
 </div>
+<div id="getting-started"></div>
+<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
+<script src="http://cdn.rawgit.com/hilios/jQuery.countdown/2.0.4/dist/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+  $('#getting-started').countdown('2016/01/01 00:00', function(event) {
+    $(this).html(event.strftime('%w 周 %d 天 %H:%M:%S'));
+  });
+</script>
   </body>
 </html>
