@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Pomodro Techniqeu</title>
+	<title>Pomodro Technique</title>
     <style type="text/css">
-        @import url(https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300);
-        *{margin: 0;font-family:Open Sans,Arial; }
+        @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
+        *{margin: 0;font-family:'Source Code Pro', monospace; }
         html,body,main{height: 100%;overflow: hidden;background: #333333;}
         h1{display: block;background: #333333;margin:0 auto;color: white;text-align: center;font-family: 'Pacifico';font-size: 5em;}
         header{display: flex;justify-content: center;text-align: center;margin: 0 auto;color: #ffffff;text-transform: uppercase;padding: 20px;}
@@ -20,9 +20,10 @@
         section .fill{content: '';position: absolute;background: #99cc00;bottom: 0;right: 0;left: 0;z-index: -1;}
     </style>
 <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 </head>
 <body>
-    <h1>Poromodoro Time</h1>
+	<font face='Source Code Pro'><h1>Poromodoro Time</h1></font>
     <main ng-app="PomodoroApp" ng-controller="MainCtrl">
         <header>
             <div class="session">
