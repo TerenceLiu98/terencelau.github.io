@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>angularJS实例-番茄钟</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300);
+        *{margin: 0;font-family:Open Sans,Arial; }
+        html,body,main{height: 100%;overflow: hidden;background: #333333;}
+        h1{display: block;background: #333333;margin:0 auto;color: white;text-align: center;font-family: 'Pacifico';font-size: 5em;}
+        header{display: flex;justify-content: center;text-align: center;margin: 0 auto;color: #ffffff;text-transform: uppercase;padding: 20px;}
+        header .session{font-size: .8rem;display: flex;}
+        header .session .breakCtrl,header .session .sessionCtrl{display: inline;padding-left: 30px;padding-right: 30px;}
+        header .session .minus,header .session .plus{background: #333333;color: #fff;border: none;cursor: pointer;font-size: 2rem;outline: none;}
+        header .session .time{font-size: 2.5rem;padding-left: 10px;padding-right: 10px;}
+        section{background: #333333;height: 100%;color: #fff;}
+        section .title{text-align: center;line-height: 180px;font-size: 0.8em;}
+        section .timer{margin:0 auto;text-align: center;width: 300px;height: 300px;font-size: 4em;border:2px solid #99cc00;border-radius: 50%;cursor: pointer;position: relative;z-index: 20;overflow: hidden;}
+        section .timer:before{content: '';position:absolute;top: 0;bottom: 0;left: 0;right: 0;border-radius: 50%;z-index: 2;border: 4px solid #333333;}
+        section .fill{content: '';position: absolute;background: #99cc00;bottom: 0;right: 0;left: 0;z-index: -1;}
+    </style>
+<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+    <h1>FreeCodeCamp</h1>
+    <main ng-app="PomodoroApp" ng-controller="MainCtrl">
+        <header>
+            <div class="session">
+                <!-- break length控制器 -->
+                <div class="breakCtrl">
+                    <p>break length</p>
+                    <button class="minus" ng-click="breakLengthChange(-1)">-</button><span class="time">{{breakLength}}</span>
+                    <button class="plus" ng-click="breakLengthChange(1)">+</button>
+                </div>
+                <!-- session length控制器 -->
+                <div class="sessionCtrl">
+                    <p>session length</p>
+                    <button class="minus" ng-click="sessionLengthChange(-1)">-</button><span class="time">{{sessionLength}}</span>
+                    <button class="plus" bg-click="sessionLengthChange(1)">+</button>
+                </div>
+            </div>
+        </header>
+        <section ng-click="toggleTimer()">
+            <div class="timer">
+                <p class="title">{{sessionName}}</p>
+                <p>{{timeLeft}}</p><span class="fill" ng-style="{'height':fillHeight,'background':fillColor}"></span>
+            </div>
+        </section>
+    </main>
+</body>
+<script type="text/javascript">                                                                                        
+    var app = angular.module('PomodoroApp',[]);   //angularjs模块初始化
+    app.controller('MainCtrl',function($scope,$interval){
+        $scope.breakLength = 5;  //breaklength初始化值为5 休息时间
+        $scope.sessionLength = 25;  //sessionlength初始化值为25  工作时间
+        $scope.timeLeft = $scope.sessionLength;   //剩余时间为sessionlength的长度
+        $scope.fillHeight = '0%';    //一开始的填充高度为0
+        $scope.sessionName = 'Session';   //计时器的名字为session 可以自己随便定义
+        $scope.currentTotal;
+
+        var runTimer = false;  //标志是否在计时的布尔值
+        var secs = 60 * $scope.sessionLength;  //将分钟转换成秒
+        $scope.originalTime = $scope.sessionLength;  //初始设置的session长度
+
+        //将时间转换成时分秒的显示形式
+        function secondsToHms(d){  
+            d = Number(d);
+            var h = Math.floor(d/3600);
+            var m = Math.floor(d%3600/60);
+            var s = Math.floor(d%3600%60);
+            return((h>0?h+":"+(m<10?"0":""):"")+m+":"+(s<10?"0":"")+s);;
+        }
+
+        //Change default session length  改变sessionlength的长度
+        $scope.sessionLengthChange = function(time){
+            if(!runTimer){  //当处于非运行状态的时候，可以对原来设置的session大小进行加减
+                if($scope.sessionName === 'Session'){
+                    $scope.sessionLength += time;
+                    if($scope.sessionLength < 1){
+                        $scope.sessionLength = 1;
+                    }
+                    $scope.timeLeft = $scope.sessionLength;
+                    $scope.originalTime = $scope.sessionLength;
+                    secs = 60*$scope.sessionLength;
+                }
+            }
+        }
+
+        //Change default break length  改变breaklength的长度
+        $scope.breakLengthChange = function(time){
+            if(!runTimer){
+                $scope.breakLength += time;
+                if($scope.breakLength<1){
+                    $scope.breakLength = 1;
+                }
+                if($scope.sessionName === 'Break!'){
+                    $scope.timeLeft = $scope.breakLength;
+                    $scope.originalTime = $scope.breakLength;
+                    secs = 60 * $scope.breakLength;
+                }
+            }
+        }
+
+        $scope.toggleTimer = function(){
+            if(!runTimer){   //如果正在运行中
+                if($scope.currentName == 'Session'){
+                    $scope.currentLength = $scope.sessionLength;
+                }else{
+                    $scope.currentLength = $scope.breakLength;
+                }
+
+                updateTimer();
+                runTimer = $interval(updateTimer,1000);   //每秒更新一下时间
+            }else{
+                $interval.cancel(runTimer);  //取消runTimer，暂停
+                runTimer = false;
+            }
+        }
+
+        function updateTimer(){
+            secs -= 1;  //以1s为单位进行时间更新
+            if(secs <0){
+                //countdown is finished
+
+                //Play audio
+                // Play audio
+            // var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
+            // var audio = new Audio(wav);
+            // audio.play();
+
+            //toggle break an session
+            $scope.fillColor = '#333333';
+            if($scope.sessionName === 'Break!'){
+                $scope.sessionName = 'Session';
+                $scope.currentLength = $scope.sessionLength;
+                $scope.timeLeft = 60 * $scope.sessionLength;
+                $scope.originalTime = $scope.sessionLength;
+                secs = 60 * $scope.sessionLength;
+            }else{
+                $scope.sessionName = 'Break!';
+                $scope.currentLength = $scope.breakLength;
+                $scope.timeLeft = 60 * $scope.breakLength;
+                $scope.originalTime = $scope.breakLength;
+                secs = 60 * $scope.breakLength;
+            }
+        }else{
+            if($scope.sessionName === 'Break!'){
+                $scope.fillColor = '#ff4444';
+            }else{
+                $scope.fillColor = '#99cc00';
+            }
+            $scope.timeLeft = secondsToHms(secs);
+
+            var denom = 60 * $scope.originalTime;
+            var perc = Math.abs((secs / denom) * 100 -100);
+            $scope.fillHeight = perc + '%';   //计算已经流逝的时间占总时间的百分比
+            console.log($scope.fillHeight);
+        }
+    }
+    });
+</script>
+</html>
+
